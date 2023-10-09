@@ -8,7 +8,7 @@ import { MongoClient } from "mongodb";
 const app = express();
 // console.log(process.env.MONGO_URL);
 app.use(express.json());
-const PORT = 4004;
+const PORT = process.env.PORT;
 //mongo connection start
 // const MONGO_URL = "mongodb://127.0.0.1:27017";
 const MONGO_URL = process.env.MONGO_URL;
