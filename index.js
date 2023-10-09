@@ -204,4 +204,23 @@ app.get("/booked", async function (request, response) {
 });
 //http://localhost:4004/booked
 
+//remaining rooms
+app.get("/notbooked", async function (request, response) {
+  const result = await client
+    .db("HallBooking")
+    .collection("hallbooking")
+    .find({ ifBooked: "false" })
+    .project({
+      id: 1,
+      customerName: 1,
+      roomName: 1,
+      date: 1,
+      startTime: 1,
+      endTime: 1,
+    })
+    .toArray();
+  response.send(result);
+});
+//http://localhost:4004/notbooked
+
 app.listen(PORT, () => console.log(`The server started in: ${PORT} ✨✨`));
