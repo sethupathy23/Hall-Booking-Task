@@ -21,7 +21,7 @@ console.log("Mongo is connected !!!  ");
 
 //http://localhost:4004
 var home =
-  "Hello all , Welcome to the HallBooking API, 1) For Hall Data = http://localhost:4004/sampledata , 2) For Hall Details by ID = http://localhost:4004/sampledata/1 (OR) http://localhost:4004/sampledata/2 (OR) http://localhost:4004/sampledata/3 (OR) http://localhost:4004/sampledata/4 (OR) http://localhost:4004/sampledata/5  3) For rooms with booked data = http://localhost:4004/booked  , 4) Remaining Rooms = http://localhost:4004/notbooked  ";
+  "Hello all , Welcome to the HallBooking API, 1) For Hall Data =  /sampledata , 2) For Hall Details by ID =  /sampledata/1 (OR) /sampledata/2 (OR)  /sampledata/3 (OR)   /sampledata/4 (OR)   /sampledata/5  3) For rooms with booked data =   /booked  , 4) Remaining Rooms =    /notbooked  ";
 // app.get("/home", async function (requeat, response) {});
 app.get("/", function (request, response) {
   response.send(home);
