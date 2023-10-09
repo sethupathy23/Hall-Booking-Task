@@ -21,7 +21,7 @@ console.log("Mongo is connected !!!  ");
 
 //http://localhost:4004
 var home =
-  "Hello all , Welcome to the HallBooking API, 1) For Hall Data = http://localhost:4004/sampledata , 2) For Hall Details by ID = http://localhost:4004/sampledata/1 (OR) http://localhost:4004/sampledata/2 (OR) http://localhost:4004/sampledata/3 (OR) http://localhost:4004/sampledata/4 (OR) http://localhost:4004/sampledata/5  3) For rooms with booked data = http://localhost:4004/booked ";
+  "Hello all , Welcome to the HallBooking API, 1) For Hall Data = http://localhost:4004/sampledata , 2) For Hall Details by ID = http://localhost:4004/sampledata/1 (OR) http://localhost:4004/sampledata/2 (OR) http://localhost:4004/sampledata/3 (OR) http://localhost:4004/sampledata/4 (OR) http://localhost:4004/sampledata/5  3) For rooms with booked data = http://localhost:4004/booked  , 4) Remaining Rooms = http://localhost:4004/notbooked  ";
 // app.get("/home", async function (requeat, response) {});
 app.get("/", function (request, response) {
   response.send(home);
@@ -193,11 +193,7 @@ app.get("/booked", async function (request, response) {
     .find({ ifBooked: "true" })
     .project({
       id: 1,
-      customerName: 1,
       roomName: 1,
-      date: 1,
-      startTime: 1,
-      endTime: 1,
     })
     .toArray();
   response.send(result);
@@ -211,12 +207,9 @@ app.get("/notbooked", async function (request, response) {
     .collection("hallbooking")
     .find({ ifBooked: "false" })
     .project({
-      id: 1,
-      customerName: 1,
+      _id: 0,
       roomName: 1,
-      date: 1,
-      startTime: 1,
-      endTime: 1,
+      roomId: 1,
     })
     .toArray();
   response.send(result);
