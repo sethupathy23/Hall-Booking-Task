@@ -20,8 +20,11 @@ console.log("Mongo is connected !!!  ");
 //mongo connection end
 
 //http://localhost:4004
+var home =
+  "Hello all , Welcome to the HallBooking API, 1) For Hall Data = http://localhost:4004/sampledata , 2) For Hall Details by ID = http://localhost:4004/sampledata/1 (OR) http://localhost:4004/sampledata/2 (OR) http://localhost:4004/sampledata/3 (OR) http://localhost:4004/sampledata/4 (OR) http://localhost:4004/sampledata/5  3) For rooms with booked data = http://localhost:4004/booked ";
+// app.get("/home", async function (requeat, response) {});
 app.get("/", function (request, response) {
-  response.send("🙋‍♂️, Hello world");
+  response.send(home);
 });
 
 //http://localhost:4004/sampledata
@@ -97,10 +100,6 @@ app.get("/", function (request, response) {
 //     bookingStatus: "booked",
 //   },
 // ];
-
-// var home =
-//   "Hello all , Welcome to the HallBooking API, 1) For Hall Data = /sampledata , 2) For Hall Details by ID = /hallDetails/643d67ad4e8e8cc0a599ca26 (OR) /hallDetails/643d67ad4e8e8cc0a599ca27 (OR) /hallDetails/643d67ad4e8e8cc0a599ca28 (OR) /hallDetails/643d67ad4e8e8cc0a599ca29 (OR) /hallDetails/643d67ad4e8e8cc0a599ca2a , 3) For rooms with booked data = /bookedHalls , 4) For customers with booked data = /bookedCustomers , 5) For number of times booked by a customer = /noOfTimes ";
-// app.get("/home", async function (requeat, response) {});
 
 app.get("/sampledata", async function (request, response) {
   //db.sampledata.find({})
@@ -203,5 +202,6 @@ app.get("/booked", async function (request, response) {
     .toArray();
   response.send(result);
 });
+//http://localhost:4004/booked
 
 app.listen(PORT, () => console.log(`The server started in: ${PORT} ✨✨`));
